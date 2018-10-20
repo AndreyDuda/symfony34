@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/feedback", name="feedback")
+    */
+    public function feedbackAction()
+    {
+        die('hello word');
+    }
 }
