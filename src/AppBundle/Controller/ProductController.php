@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -16,6 +17,7 @@ class ProductController extends Controller
 {
     /**
      * @Route("/products", name="product_list")
+     * @Template()
      */
     public function indexAction()
     {
@@ -29,15 +31,19 @@ class ProductController extends Controller
             'products' => $products
         ];
 
-        return $this->render('@App/product/index.html.twig', $data);
+        return $data;
     }
 
     /**
      * @Route("/product/{id}", name="product_item", requirements={"id": "[0-9]+"})
+     * @Template()
      */
-    public function showAction(Request $request)
+    public function showAction($id)
     {
-        die($request->get('id'));
+        $data = [
+            'id' => $id
+        ];
+        return $data;
     }
 
 }
